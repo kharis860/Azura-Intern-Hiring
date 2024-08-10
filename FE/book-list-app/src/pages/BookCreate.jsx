@@ -9,16 +9,12 @@ export default function BookCreate() {
   const [alert, setalert] = useState({});
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name);
     setFormData({ ...formData, [name]: value });
-    console.log(event.target.value);
-    console.log(formData);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const tes = JSON.stringify(formData);
-    console.log(tes);
     fetch("http://127.0.0.1:3100/book", {
       method: "POST",
       headers: {

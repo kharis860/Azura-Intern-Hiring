@@ -14,7 +14,6 @@ export default function BookCategory() {
       try {
         const res = await axios.get("http://127.0.0.1:3100/book-category");
         setData(res.data.data);
-        console.log(res);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -26,16 +25,14 @@ export default function BookCategory() {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(`http://127.0.0.1:3100/book-category/${id}`);
-      console.log(response);
       if (response.status === 200) {
-        console.log("Berhasil menghapus data");
         const res = await axios.get("http://127.0.0.1:3100/book-category");
         setData(res.data.data);
       } else {
-        console.error("Gagal menghapus data");
+        console.error("Delete data failed");
       }
     } catch (error) {
-      console.error("Terjadi kesalahan:", error);
+      console.error("Something wrong:", error);
     }
   };
   const handleClick = (bookCategory) => {

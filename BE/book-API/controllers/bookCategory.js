@@ -7,7 +7,6 @@ module.exports = {
     res.end;
   },
   create: async (req, res) => {
-    console.log(req.body);
     const bookCategory = new BookCategory(req.body);
     await bookCategory.save();
     res.status(200).json({ message: "successful add book category", data: bookCategory });

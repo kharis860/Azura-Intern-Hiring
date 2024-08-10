@@ -70,6 +70,11 @@ Create a book list website which allows to manage books and book categories.
    - Little, Brown and Company
 
    After try the search bar, You can also try to add book, edit book, and delete book.
+   then, when add book, You can use several category like this
+
+   ```
+   ["fiction", "non-fiction", "horror", "sci-fi", "romance", "fantasy", "young-adult", "mystery"]
+   ```
 
 2. Book category List Page
    Here you can view list of book category. then, as same as previous page you cal also add, edit, and delete book category.

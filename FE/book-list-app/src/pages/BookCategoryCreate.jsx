@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
-import axios from "axios";
 
 export default function BookCategoryCreate() {
   const [formData, setFormData] = useState({});
@@ -11,14 +10,10 @@ export default function BookCategoryCreate() {
   const handleChange = (event) => {
     const result = event.target.value;
     setFormData({ category: result });
-    console.log(event.target.value);
-    console.log(formData);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const tes = JSON.stringify(formData);
-    console.log(tes);
     fetch("http://127.0.0.1:3100/book-category", {
       method: "POST",
       headers: {

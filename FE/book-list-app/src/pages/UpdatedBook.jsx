@@ -15,16 +15,13 @@ export default function UpdatedBook() {
   };
   useEffect(() => {
     const storedValue = localStorage.getItem("book");
-    console.log(storedValue);
     const storedValues = JSON.parse(storedValue);
-    console.log(storedValues);
     setlocalStorageData(storedValues);
     setIsLoading(false);
   }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
     const tes = JSON.stringify(formData);
-    console.log(tes);
     fetch(`http://127.0.0.1:3100/book/${localStorageData._id}`, {
       method: "PUT",
       headers: {
