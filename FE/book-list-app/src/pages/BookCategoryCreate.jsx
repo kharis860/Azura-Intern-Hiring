@@ -5,22 +5,26 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function BookCategoryCreate() {
-  const [formData, setFormData] = useState({
-    category: "",
-  });
+  const [formData, setFormData] = useState();
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    const result = event.target.value;
+    setFormData({ category: result });
     console.log(event.target.value);
+    console.log(formData);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const tes = JSON.stringify(formData);
     console.log(tes);
-    axios
-      .post("http://127.0.0.1:3100/book-category", formData)
-      .then((response) => console.log(response.data))
+    fetch("http://127.0.0.1:3100/book-category", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
       })

@@ -5,14 +5,10 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function UpdatedBookCategory() {
-  const [formData, setFormData] = useState({
-    category: "",
-  });
+  const [formData, setFormData] = useState();
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-    console.log(event.target.value);
+    setFormData(event.target.value);
   };
 
   const handleSubmit = (event) => {

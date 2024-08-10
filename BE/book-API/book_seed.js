@@ -61,14 +61,6 @@ const seedBook = [
     category: "horror",
   },
   {
-    title: "The Art of War",
-    author: "Sun Zi",
-    publication_date: "-500",
-    publisher: "Sun Tzu",
-    number_of_page: 130,
-    category: "non-fiction",
-  },
-  {
     title: "The Alchemist",
     author: "Paulo Coelho",
     publication_date: "1988-09-22",

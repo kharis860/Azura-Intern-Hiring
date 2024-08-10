@@ -23,8 +23,6 @@ export default function Sidebar() {
               return isActive ? "active" : "sidebar-item";
             }}
           >
-            {console.log(item.id, "ini item id")}
-            {console.log(activeItem, "ini item active")}
             {item.item}
           </NavLink>
         ))}

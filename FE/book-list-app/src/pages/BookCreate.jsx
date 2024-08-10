@@ -5,18 +5,15 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function BookCreate() {
-  const [formData, setFormData] = useState({
-    title: "",
-    publication_date: "",
-    publisher: "",
-    number_of_Page: "",
-    category: "",
-  });
+  const [formData, setFormData] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(name);
+
     setFormData({ ...formData, [name]: value });
     console.log(event.target.value);
+    console.log(formData);
   };
 
   const handleSubmit = (event) => {
@@ -37,6 +34,14 @@ export default function BookCreate() {
       .catch((error) => {
         console.error("Error:", error);
       });
+    setFormData({
+      title: "",
+      author: "",
+      publication_date: "",
+      publisher: "",
+      number_of_page: "",
+      category: "",
+    });
   };
 
   return (
@@ -52,15 +57,17 @@ export default function BookCreate() {
             <div className="container-form">
               <form onSubmit={handleSubmit}>
                 <label>Title: </label>
-                <input type="text" name="Title" onChange={handleChange} />
+                <input type="text" name="title" value={formData.title} onChange={handleChange} />
+                <label>Author: </label>
+                <input type="text" name="author" value={formData.author} onChange={handleChange} />
                 <label>Publication Date:</label>
-                <input type="text" name="Publication Date" placeholder="YYYY-MM-DD" onChange={handleChange} />
+                <input type="text" name="publication_date" placeholder="YYYY-MM-DD" value={formData.publication_date} onChange={handleChange} />
                 <label>Publisher:</label>
-                <input type="text" name="Publisher" onChange={handleChange} />
+                <input type="text" name="publisher" value={formData.publisher} onChange={handleChange} />
                 <label>Number of Page:</label>
-                <input type="text" name="Number of Page" onChange={handleChange} />
+                <input type="text" name="number_of_page" value={formData.number_of_page} onChange={handleChange} />
                 <label>Category:</label>
-                <input type="text" name="Category" onChange={handleChange} />
+                <input type="text" name="category" value={formData.category} onChange={handleChange} />
                 <button type="submit">Submit</button>
               </form>
             </div>

@@ -2,23 +2,20 @@ const app = require("express")();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const indexRouter = require("./routes/index");
+// const corsMiddleware = require("./middlewares/cors");
 
-// app.use((req, res, next) => {
-//   res.setHeader("Acces-Control-Allow-Origin", "*");
-//   res.setHeader("Acces-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   res.setHeader("Acces-Control-Allow-Header", "Content-Type", "Authorization");
-//   next();
-// });
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: "GET, POST, PUT, DELETE",
+  credentials: true,
+};
+
+// app.use(corsMiddleware);
+// app.option("*", cors(corsMiddleware));
+
+app.use(cors(corsOptions));
 app.use(cors());
-// app.use(
-//   cors({
-//     // origin: "http://localhost:3000/book-create",
-//     // // "Access-Control-Allow-Origin": "http://localhost:3000/book-create",
-//     // methods: "GET,POST,PUT,DELETE,OPTION",
-//     // credentials: true,
-//     // allowedHeaders: ["Content-Type", "Authorization"],
-//   })
-// );
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", indexRouter);
