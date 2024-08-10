@@ -65,7 +65,10 @@ export default function Book() {
         console.error("Error:", error);
       });
   };
-
+  const handleClick = (book) => {
+    const books = JSON.stringify(book);
+    localStorage.setItem("book", books);
+  };
   return (
     <div>
       <Navbar />
@@ -104,7 +107,7 @@ export default function Book() {
                         </div>
                         <div className="card-control">
                           <div className="card-icon">
-                            <Link to="/update-book/">
+                            <Link to="/update-book/" onClick={() => handleClick(book)}>
                               <i class="fa-solid fa-pen-to-square"></i>
                             </Link>
                           </div>

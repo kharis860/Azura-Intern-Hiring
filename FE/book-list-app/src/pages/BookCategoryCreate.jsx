@@ -5,7 +5,9 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function BookCategoryCreate() {
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState({});
+  const [alert, setalert] = useState({});
+
   const handleChange = (event) => {
     const result = event.target.value;
     setFormData({ category: result });
@@ -26,11 +28,16 @@ export default function BookCategoryCreate() {
     })
       .then((response) => response.json())
       .then((data) => {
+        setalert(data);
         console.log("Success:", data);
+        console.log(alert);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+    setFormData({
+      category: "",
+    });
   };
 
   return (
@@ -46,9 +53,12 @@ export default function BookCategoryCreate() {
             <div className="container-form">
               <form onSubmit={handleSubmit}>
                 <label>Category: </label>
-                <input type="text" name="Category" onChange={handleChange} />
+                <input type="text" name="category" value={formData.category} onChange={handleChange} />
                 <button type="submit">Submit</button>
               </form>
+              <div className="alert">
+                <h1>{alert.message}</h1>
+              </div>
             </div>
           </div>
         </section>

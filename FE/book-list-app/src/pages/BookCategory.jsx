@@ -38,6 +38,10 @@ export default function BookCategory() {
       console.error("Terjadi kesalahan:", error);
     }
   };
+  const handleClick = (bookCategory) => {
+    const bookCategories = JSON.stringify(bookCategory);
+    localStorage.setItem("bookCategory", bookCategories);
+  };
   return (
     <div>
       <Navbar />
@@ -66,7 +70,7 @@ export default function BookCategory() {
                         </div>
                         <div className="card-control">
                           <div className="card-icon">
-                            <Link to="/update-book-category">
+                            <Link to="/update-book-category" onClick={() => handleClick(bookCategory)}>
                               <i class="fa-solid fa-pen-to-square"></i>
                             </Link>
                           </div>

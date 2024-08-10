@@ -6,11 +6,10 @@ import axios from "axios";
 
 export default function BookCreate() {
   const [formData, setFormData] = useState({});
-
+  const [alert, setalert] = useState({});
   const handleChange = (event) => {
     const { name, value } = event.target;
     console.log(name);
-
     setFormData({ ...formData, [name]: value });
     console.log(event.target.value);
     console.log(formData);
@@ -29,6 +28,7 @@ export default function BookCreate() {
     })
       .then((response) => response.json())
       .then((data) => {
+        setalert(data);
         console.log("Success:", data);
       })
       .catch((error) => {
@@ -70,6 +70,9 @@ export default function BookCreate() {
                 <input type="text" name="category" value={formData.category} onChange={handleChange} />
                 <button type="submit">Submit</button>
               </form>
+              <div className="alert">
+                <h1>{alert.message}</h1>
+              </div>
             </div>
           </div>
         </section>
